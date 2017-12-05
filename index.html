@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Die Affen sind los</title>
+</head>
+
+
+<body>
+<img id="goal" src="img/road/goal.png" width="480" ><br>
+<img id="startButton" src="img/buttons/button-start.png" onclick="gotoGame()" STYLE="position:absolute; LEFT:110px; WIDTH:250px; HEIGHT:250px">
+<!--<audio src="audio/serengeti_background_music.mp3" style="display:none;" autoplay loop></audio>-->
+<audio id="engine" loop>
+    <source src="audio/serengeti_motor.mp3">
+</audio>
+<audio id="soundbox"></audio>
+<script>
+    function gotoGame() {
+        var elem1 = document.getElementById('goal');
+        var elem2 = document.getElementById('startButton');
+        var engine = document.getElementById('engine');
+        elem1.parentNode.removeChild(elem1);
+        elem2.parentNode.removeChild(elem2);
+        engine.play();
+        startGame();
+    }
+</script>
+<script language="javascript" type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
