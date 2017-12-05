@@ -204,7 +204,7 @@ function updateGameArea() {
             var pos = (Math.floor((Math.random() * 3) + 1) - 1);
             var direction = (Math.floor((Math.random() * 2) + 1) - 1);
             if(direction == 0){
-                animalx = 430;
+                animalx = window.innerWidth-100;
                 speed = animalSpeed[pos] * (-1);
             }
             if(direction == 1){
