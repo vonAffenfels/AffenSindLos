@@ -7,9 +7,9 @@ var myBackground;
 var myAnimal = [];
 //Character
 var car;
-var carPosX = 185;
+var carPosX = window.innerWidth/2;
 var carX;
-var carPosY = 628;
+var carPosY = window.innerHeight-250;
 var carY;
 var newAnimals = true;
 //Animals
@@ -39,8 +39,6 @@ function startGame() {
 
     show_SoundMessage();
     //Strecke
-    //trackL = new track(10, 140, "black", 170, 0);
-    //trackR = new track(10, 140, "black", 300, 0);
     myBackground = new road(window.innerWidth, window.innerHeight, 0, -60, "./img/road/road-1.png");
     //Auto
     carX = carPosX;
@@ -49,7 +47,7 @@ function startGame() {
     //Button
     clickField = new track(window.innerWidth, 75, "black", 0, window.innerHeight-75);
     breakButton = new controller(72, 72, "./img/button-pause.png", window.innerWidth/2, window.innerHeight-75);
-    myScore = new score("30px", "LiquorstoreJazz", "white", 20, 830, "text");
+    myScore = new score("30px", "LiquorstoreJazz", "white", 20, window.innerHeight-30, "text");
     myGameArea.start();
 
 }
