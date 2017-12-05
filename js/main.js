@@ -57,8 +57,8 @@ function startGame() {
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 856;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -194,14 +194,10 @@ function updateGameArea() {
     //canvas clear
     myGameArea.clear();
     //load new Positions
-    //trackL.newPos();
-    //trackR.newPos();
     myBackground.newPos();
     myBackground.update();
     car.newPos();
     //Set new Objects
-    //trackL.update();
-    //trackR.update();
     car.update();
     //neue Tiere setzen
     if(newAnimals == true) {
@@ -260,15 +256,13 @@ function updateGameArea() {
 }
 
 function clearMove(){
-    //trackL.speedY = 10;
-    //trackR.speedY = 10;
     if(car.direction === "right"){
         car.speedX = 5;
     }
     if(car.direction === "left"){
         car.speedX = -5;
     }
-
+    myBackground.speedY = 5;
     for(var i = 0; i < myAnimal.length; i++){
         myAnimal[i].speedY = 10;
     }
@@ -276,8 +270,6 @@ function clearMove(){
 }
 
 function stopMove() {
-    //trackL.speedY = 0;
-    //trackR.speedY = 0;
     var breaksound = document.getElementById('soundbox');
     myBackground.speedY = 0;
     car.speedX = 0;
