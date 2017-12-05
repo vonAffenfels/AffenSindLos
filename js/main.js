@@ -41,14 +41,14 @@ function startGame() {
     //Strecke
     //trackL = new track(10, 140, "black", 170, 0);
     //trackR = new track(10, 140, "black", 300, 0);
-    myBackground = new road(480, 856, 0, -60, "./img/road/road-1.png");
+    myBackground = new road(window.innerWidth, window.innerHeight, 0, -60, "./img/road/road-1.png");
     //Auto
     carX = carPosX;
     carY = carPosY;
     car = new char(50, 90, carX, carY, "./img/char/car.png");
     //Button
-    clickField = new track(480, 75, "black", 0, 781);
-    breakButton = new controller(72, 72, "./img/button-pause.png", 205, 781);
+    clickField = new track(window.innerWidth, 75, "black", 0, window.innerHeight-75);
+    breakButton = new controller(72, 72, "./img/button-pause.png", window.innerWidth/2, window.innerHeight-75);
     myScore = new score("30px", "LiquorstoreJazz", "white", 20, 830, "text");
     myGameArea.start();
 
