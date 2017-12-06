@@ -19,8 +19,8 @@ var animalSprite = [
 var animalSpeedY = 5;
 var animalSpeed = [
     3,
-    4,
-    5
+    3,
+    3
 ];
 var animalDMG = [
     100,
@@ -55,7 +55,7 @@ function startGame() {
 
     show_SoundMessage();
     document.getElementById('restart').style = 'display:none';
-    GameEnd = false;
+
     //Strecke
     myBackground = new road(window.innerWidth, window.innerHeight, 0, -60, "./img/road/road-1.png");
     //Auto
@@ -67,14 +67,14 @@ function startGame() {
     breakButton = new controller(72, 72, "./img/button-pause.png", window.innerWidth / 2, window.innerHeight - 75);
     myScore = new score("30px", "LiquorstoreJazz", "white", 20, window.innerHeight - 30, "text");
     GameOverText = new gameover("30px", "LiquorstoreJazz", "black", 20, 30, "text");
+    GameEnd = false;
     myGameArea.start();
 
 }
 
 function restart() {
-
     document.getElementById('restart').style = '';
-
+    myScore.scorePoints = 3250;
 }
 
 var myGameArea = {
@@ -229,11 +229,11 @@ function updateGameArea() {
             var pos = (Math.floor((Math.random() * 3) + 1) - 1);
             var direction = (Math.floor((Math.random() * 2) + 1) - 1);
             if (direction == 0) {
-                animalx = window.innerWidth - 100;
+                animalx = window.innerWidth + 75;
                 speed = animalSpeed[pos] * (-1);
             }
             if (direction == 1) {
-                animalx = 50;
+                animalx = -75;
                 speed = animalSpeed[pos];
             }
 
@@ -330,7 +330,13 @@ function score(size, font, color, x, y, type) {
     this.font = font;
     this.x = x;
     this.y = y;
-    this.scorePoints = 3000;
+    if(GameEnd === true) {
+      this.scorePoints = 3250
+    }
+    else {
+        this.scorePoints = 3000;
+    }
+
     this.update = function () {
         ctx = myGameArea.context;
         ctx.font = this.size + " " + this.font;
