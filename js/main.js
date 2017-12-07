@@ -53,14 +53,15 @@ function show_SoundMessage() {
     sound_message += ">";
     document.getElementById(sound_id).innerHTML = sound_message;
 }
-
+function loadHighscore(){
+    getHighscore(function (highscore) {
+        document.getElementById('hs').innerHTML = "Highscore: " + highscore;
+    });
+}
 function startGame() {
 
     show_SoundMessage();
     document.getElementById('restart').style = 'display:none';
-    getHighscore(function (highscore) {
-        document.getElementById('hs').innerHTML = "Highscore: " + highscore;
-    });
     //Strecke
     myBackground = new road(window.innerWidth, window.innerHeight, 0, -60, "./img/road/road-1.png");
     //Auto
