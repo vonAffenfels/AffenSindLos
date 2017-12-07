@@ -313,7 +313,7 @@ function updateGameArea() {
         GameOverText.update();
         GameEnd = true;
 
-        var highscore = Math.floor((myGameArea.frameNo / 100));
+        var highscore = Math.floor((myGameArea.frameNo));
         myScore.text = "Persönlicher High-Score: " + (highscore);
         saveHighscore(highscore);
         myScore.update();
