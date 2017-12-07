@@ -74,6 +74,9 @@ function startGame() {
     myScore = new score("30px", "LiquorstoreJazz", "white", 20, window.innerHeight - 30, "text");
     GameOverText = new gameover("25px", "LiquorstoreJazz", "black", 20, 30, "text");
     GameEnd = false;
+    if (document.getElementsByTagName('canvas')[0]) {
+        document.getElementsByTagName('canvas')[0].setAttribute("style", "display")
+    }
     myGameArea.start();
 
 }
@@ -118,13 +121,20 @@ function saveHighscore(highscore) {
 }
 
 function restart() {
+    document.getElementsByTagName('canvas')[0].setAttribute("style", "display:none");
+
     document.getElementById('restart').style = '';
+    document.getElementById('hs').style = '';
+    document.getElementById('gameover').style = '';
     myScore.scorePoints = 3250;
 }
 
 var myGameArea = {
+
     canvas: document.createElement("canvas"),
+
     start: function () {
+
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext("2d");
@@ -308,16 +318,14 @@ function updateGameArea() {
     if (myScore.scorePoints <= 0) {
         myGameArea.clear();
         //GameOver.update();
-        clickField.update();
+        //clickField.update();
         //GameOver Text + Click to Retry
-        GameOverText.text = 'Game Over Mate Click to retry';
-        GameOverText.update();
+
         GameEnd = true;
 
         var highscore = Math.floor((myGameArea.frameNo));
-        myScore.text = "Persönlicher High-Score: " + (highscore);
         saveHighscore(highscore);
-        myScore.update();
+
         //Highscore-Liste
 
         //Retry Button
@@ -346,7 +354,12 @@ function clearMove() {
 function stopMove() {
     var breaksound = document.getElementById('soundbox');
     myBackground.speedY = 2;
-    car.speedX = 1;
+    if (car.direction== 'left'){
+        car.speedX = -1;
+    }
+    if (car.direction== 'right'){
+        car.speedX = 1;
+    }
     if (GameEnd === false) {
         breaksound.play();
     }
