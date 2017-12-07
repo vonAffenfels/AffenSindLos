@@ -66,7 +66,7 @@ function startGame() {
     clickField = new track(window.innerWidth, 75, "black", 0, window.innerHeight - 75);
     breakButton = new controller(72, 72, "./img/button-pause.png", window.innerWidth / 2, window.innerHeight - 75);
     myScore = new score("30px", "LiquorstoreJazz", "white", 20, window.innerHeight - 30, "text");
-    GameOverText = new gameover("30px", "LiquorstoreJazz", "black", 20, 30, "text");
+    GameOverText = new gameover("25px", "LiquorstoreJazz", "black", 20, 30, "text");
     GameEnd = false;
     myGameArea.start();
 
@@ -265,7 +265,7 @@ function updateGameArea() {
         //GameOver.update();
         clickField.update();
         //GameOver Text + Click to Retry
-        GameOverText.text = "Game Over Mate Click to retry";
+        GameOverText.text = 'Game Over Mate Click to retry';
         GameOverText.update();
         GameEnd = true;
         myScore.text = "Persönlicher High-Score: " + (Math.floor((myGameArea.frameNo / 100)));
@@ -359,4 +359,3 @@ function gameover(size, font, color, x, y, type) {
         ctx.fillText(this.text, this.x, this.y);
     }
 }
-
