@@ -41,6 +41,7 @@ var breakDMG;
 var myScore;
 var GameOverText;
 var GameEnd = false;
+var animalHit = 0;
 
 
 
@@ -124,9 +125,8 @@ function restart() {
     document.getElementsByTagName('canvas')[0].setAttribute("style", "display:none");
 
     document.getElementById('restart').style = '';
-    document.getElementById('hs').style = '';
     document.getElementById('gameover').style = '';
-    myScore.scorePoints = 3250;
+    myScore.scorePoints = 0;
 }
 
 var myGameArea = {
@@ -253,8 +253,11 @@ function animal(width, height, x, y, imgSrc, speed, DMG) {
             if (car.x <= (this.x + 50) && car.x >= (this.x - 50)) {
                 //punkte runterzählen
                 if (this.status == true) {
-                    myScore.scorePoints = myScore.scorePoints - this.points;
-                    this.status = false
+                    animalHit += 1;
+                    this.status = false;
+                }
+                if (animalHit == 5){
+                    restart();
                 }
             }
         }
@@ -305,17 +308,13 @@ function updateGameArea() {
     breakButton.update();
     if (newAnimals == true) {
         if (everyinterval(60)) {
-            myScore.scorePoints -= 1;
+            myScore.scorePoints += 1;
         }
-    }
-    if (breakDMG == true) {
-        myScore.scorePoints -= 250;
-        breakDMG = false;
     }
 
     myScore.text = "SCORE: " + myScore.scorePoints;
     myScore.update();
-    if (myScore.scorePoints <= 0) {
+    if (animalHit === 5) {
         myGameArea.clear();
         //GameOver.update();
         //clickField.update();
@@ -323,9 +322,9 @@ function updateGameArea() {
 
         GameEnd = true;
 
-        var highscore = Math.floor((myGameArea.frameNo));
+        var highscore = myScore.scorePoints;
         saveHighscore(highscore);
-
+        document.getElementById('hs').innerHTML = "Ihr Aktueller Highscore ist: " + highscore;
         //Highscore-Liste
 
         //Retry Button
@@ -391,10 +390,10 @@ function score(size, font, color, x, y, type) {
     this.x = x;
     this.y = y;
     if(GameEnd === true) {
-      this.scorePoints = 3250
+      this.scorePoints = 0;
     }
     else {
-        this.scorePoints = 3000;
+        this.scorePoints = 0;
     }
 
     this.update = function () {
@@ -411,7 +410,7 @@ function gameover(size, font, color, x, y, type) {
     this.font = font;
     this.x = x;
     this.y = y;
-    this.text = "GAMEOVER DU MOE"
+    this.text = ""
     this.update = function () {
         ctx = myGameArea.context;
         ctx.font = this.size + " " + this.font;
