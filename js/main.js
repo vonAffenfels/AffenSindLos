@@ -7,7 +7,7 @@ var myAnimal = [];
 var car;
 var carPosX = window.innerWidth / 2;
 var carX;
-var carPosY = window.innerHeight - 250;
+var carPosY = window.innerHeight - 150;
 var carY;
 var newAnimals = true;
 //Animals
@@ -42,6 +42,9 @@ var myScore;
 var GameOverText;
 var GameEnd = false;
 
+
+
+
 function show_SoundMessage() {
     var soundfile = "audio/serengeti_brake.mp3";
     var sound_id = "soundbox";
@@ -55,7 +58,9 @@ function startGame() {
 
     show_SoundMessage();
     document.getElementById('restart').style = 'display:none';
-
+    getHighscore(function (highscore) {
+        document.getElementById('hs').innerHTML = "Highscore: " + highscore;
+    });
     //Strecke
     myBackground = new road(window.innerWidth, window.innerHeight, 0, -60, "./img/road/road-1.png");
     //Auto
@@ -70,6 +75,45 @@ function startGame() {
     GameEnd = false;
     myGameArea.start();
 
+}
+
+function getHighscore(callback) {
+
+        if (!(window.parent) || window.parent === window) {
+            console.log("App missing");
+        }
+
+    var handler = function (event) {
+        if (event.data.method === "setHighscore") {
+            callback(event.data.payload.score);
+            window.removeEventListener("message", handler);
+        }
+
+    };
+
+    window.addEventListener("message", handler);
+
+    window.parent.postMessage({
+        method: "getHighscore",
+        payload: {
+            name: 'AffenSindLos'
+        }
+    }, "*");
+}
+
+
+function saveHighscore(highscore) {
+    if (!highscore || isNaN(highscore)) {
+        return;
+    }
+
+    window.parent.postMessage({
+        method: "saveHighscore",
+        payload: {
+            score: parseInt(highscore),
+            name: 'AffenSindLos'
+        }
+    }, "*");
 }
 
 function restart() {
@@ -181,7 +225,7 @@ function animal(width, height, x, y, imgSrc, speed, DMG) {
     this.height = height;
     this.image = new Image();
     this.image.src = imgSrc;
-    this.speedY = 5;
+    this.speedY = animalSpeedY;
     this.speedX = speed;
     this.points = DMG;
     this.status = true;
@@ -237,7 +281,7 @@ function updateGameArea() {
                 speed = animalSpeed[pos];
             }
 
-            myAnimal.push(new animal(50, 50, animalx, 0, "./img/animal/" + animalDirection[direction] + "_" + animalSprite[pos] + ".png", speed, animalDMG[pos]));
+            myAnimal.push(new animal(window.innerWidth / 10, window.innerHeight/12, animalx, 0, "./img/animal/" + animalDirection[direction] + "_" + animalSprite[pos] + ".png", speed, animalDMG[pos]));
         }
     }
     for (var i = 0; i < myAnimal.length; i++) {
@@ -268,7 +312,10 @@ function updateGameArea() {
         GameOverText.text = 'Game Over Mate Click to retry';
         GameOverText.update();
         GameEnd = true;
-        myScore.text = "Persönlicher High-Score: " + (Math.floor((myGameArea.frameNo / 100)));
+
+        var highscore = Math.floor((myGameArea.frameNo / 100));
+        myScore.text = "Persönlicher High-Score: " + (highscore);
+        saveHighscore(highscore);
         myScore.update();
         //Highscore-Liste
 
@@ -282,10 +329,10 @@ function updateGameArea() {
 
 function clearMove() {
     if (car.direction === "right") {
-        car.speedX = 5;
+        car.speedX = 0.90;
     }
     if (car.direction === "left") {
-        car.speedX = -5;
+        car.speedX = -0.90;
     }
     myBackground.speedY = 5;
     for (var i = 0; i < myAnimal.length; i++) {
@@ -298,7 +345,7 @@ function clearMove() {
 function stopMove() {
     var breaksound = document.getElementById('soundbox');
     myBackground.speedY = 2;
-    car.speedX = 0;
+    car.speedX = 1;
     if (GameEnd === false) {
         breaksound.play();
     }
@@ -307,7 +354,6 @@ function stopMove() {
     }
     animalSpeedY = 2;
     breakDMG = true;
-
 }
 
 function controller(height, width, imgSrc, x, y) {
