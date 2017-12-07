@@ -33,6 +33,7 @@ var animalDirection = [
 ];
 var speed;
 var animalx;
+var animaly;
 //Controller
 var clickField;
 var breakButton;
@@ -62,6 +63,9 @@ function loadHighscore(){
 function startGame() {
 
     show_SoundMessage();
+    if(animalHit !== 0) {
+        animalHit=0;
+    }
     document.getElementById('restart').style = 'display:none';
     //Strecke
     myBackground = new road(window.innerWidth, window.innerHeight, 0, -60, "./img/road/road-1.png");
