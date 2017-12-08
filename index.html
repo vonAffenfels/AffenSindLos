@@ -4,34 +4,25 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="ie=edge">
 <meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no">
+<html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="js/phaser.js" type="text/javascript"></script>
     <title>Die Affen sind los</title>
+    <style type="text/css">
+        html,body {
+            margin: 0;
+            padding: 0;
+        }
+        #gameDiv {
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0 auto;
+        }
+    </style>
 </head>
-
-
-<body onload="loadHighscore()">
-<img id="goal" src="img/road/goal.png" width="300" ><br>
-<span id="hs" style="display:none;">HIGHSCORE: </span><br>
-<div id="gameover" style="display:none;">Game Over <br> Click on Button to Restart</div>
-<img id="startButton" src="img/buttons/button-start.png" onclick="gotoGame()" STYLE="position:absolute; LEFT:40px; WIDTH:250px; HEIGHT:250px">
-<audio src="audio/serengeti_background_music.mp3" style="display:none;" autoplay loop></audio>
-<audio id="engine">
-    <source src="audio/serengeti_motor.mp3">
-</audio>
-<img id="restart" src="img/buttons/button-close.png" onclick="startGame()" style="display:none;" STYLE="position:absolute; ">
-<audio id="soundbox"></audio>
-    <audio id="animalhit"></audio>
-        <script>
-    function gotoGame() {
-        var elem1 = document.getElementById('goal');
-        var elem2 = document.getElementById('startButton');
-        var engine = document.getElementById('engine');
-        elem1.parentNode.removeChild(elem1);
-        elem2.parentNode.removeChild(elem2);
-        engine.play();
-        startGame();
-    }
-</script>
-<script language="javascript" type="text/javascript" src="js/main.js"></script>
+<body style="margin: 0px;">
+<div id="gameDiv"></div>
+<script src="js/affensindlos.js" type="text/javascript"></script>
 </body>
 </html>

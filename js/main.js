@@ -299,7 +299,7 @@ function updateGameArea() {
                 speed = animalSpeed[pos];
             }
 
-            myAnimal.push(new animal(window.innerWidth / 10, window.innerHeight/12, animalx, 0, "./img/animal/" + animalDirection[direction] + "_" + animalSprite[pos] + ".png", speed, animalDMG[pos]));
+            myAnimal.push(new animal(window.innerWidth / 10, window.innerHeight/12, animalx, 0, "./img/animals/" + animalDirection[direction] + "_" + animalSprite[pos] + ".png", speed, animalDMG[pos]));
         }
     }
     for (var i = 0; i < myAnimal.length; i++) {
