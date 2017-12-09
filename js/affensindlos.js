@@ -126,7 +126,7 @@ var mainState = {
     }
 
 };
-
+//For COMMIT
 function spawnAnimal() {
     var direction = Math.random() < 0.5? 'left' : 'right';
     var tiername = animalNames[Math.floor(Math.random() * animalNames.length)];
