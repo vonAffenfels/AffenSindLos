@@ -1,5 +1,5 @@
-var height = window.innerHeight * window.devicePixelRatio;
-var width = window.innerWidth * window.devicePixelRatio;
+var height = window.innerHeight ;
+var width = window.innerWidth;
 var scaleFactorWidth = width / 320;
 var scaleFactorHeight = height / 568;
 
@@ -53,7 +53,6 @@ var mainState = {
         road = game.add.tileSprite(0, 0, width, height, 'road');
         //Car
         car = game.add.tileSprite(((320 / 2)-16) * scaleFactorWidth, (500-100) * scaleFactorHeight, 128, 253, 'car');
-
         game.physics.enable(car, Phaser.Physics.ARCADE);
         car.body.immovable = true;
         //infoBox
@@ -78,7 +77,7 @@ var mainState = {
     },
     update: function () {
         if (hitmax === 5) {
-            game.destroy()
+            //game.destroy()
         }
 
         road.tilePosition.y += backgroundv;
@@ -88,21 +87,17 @@ var mainState = {
                     animal.angle += 2;
                     animal.dmg = true;
                     if (animal.dmg === true && animal.dmgused === false ) {
-                        console.log('huhu');
                         hitmax += 1;
                         animal.dmgused = true;
                     }
-                    console.log(animal.dmgused);
                     return;
                 }
                 animal.hit = true;
 
                 if (animal.dmg === true && animal.dmgused === false ) {
-                    console.log('huhu');
                     hitmax += 1;
                     animal.dmgused = true;
                 }
-                console.log(hitmax);
             });
 
         }
@@ -116,7 +111,6 @@ var mainState = {
 function spawnAnimal() {
     var direction = Math.random() < 0.5? 'left' : 'right';
     var tiername = animalNames[Math.floor(Math.random() * animalNames.length)];
-
     var tier = game.add.tileSprite((direction === 'left' ? 320 : (-50)) * scaleFactorWidth, 50 + (Math.random()*100), 222, 204, tiername, 1);
     tier.anchor.x=0.5;
     tier.anchor.y=0.5;
@@ -125,31 +119,28 @@ function spawnAnimal() {
     tier.animations.add('walk');
     tier.animations.play('walk', 5, true);
     game.physics.enable(tier, Phaser.Physics.ARCADE);
+    //car.scale.setTo(scaleFactorWidth / 3, scaleFactorHeight / 3);
     switch(tiername) {
         case 'elephant':
-            tier.body.setSize(230, 140, 60, 125);
+            tier.body.setSize(150,100,250/scaleFactorWidth,300/scaleFactorHeight);
             break;
         case 'giraffe':
-            tier.body.setSize(100, 250, 125, 25);
+            tier.body.setSize(150,200,250/scaleFactorWidth,190/scaleFactorHeight);
             break;
         case 'gorilla':
-            tier.body.setSize(190, 140, 70, 125);
+            tier.body.setSize(150,100,250/scaleFactorWidth,300/scaleFactorHeight);
             break;
         case 'lion':
-            tier.body.setSize(190, 140, 70, 125);
+            tier.body.setSize(150,100,250/scaleFactorWidth,300/scaleFactorHeight);
             break;
         case 'monkey':
-            tier.body.setSize(190, 140, 70, 125);
+            tier.body.setSize(150,100,250/scaleFactorWidth,300/scaleFactorHeight);
             break;
     }
     var speed = 2 + (Math.random() * 2) * 100;
     tier.body.velocity.x = (direction === 'left'? -speed : speed);
     tier.body.velocity.y = animalyspeed;
-    //tier.body.onCollide = new Phaser.Signal();
-    //tier.body.onCollide.add(true, this);
-
     tier.animations.currentAnim.setFrame(Math.floor(Math.random() * 2), true);
-    console.log(tier);
     animals.push(tier);
 
 }
