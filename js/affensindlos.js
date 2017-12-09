@@ -8,8 +8,13 @@ var game = new Phaser.Game(width, height, Phaser.CANVAS, 'gameDiv');
 //Background + Speed of Background
 var road;
 var backgroundv;
+var backgroundSound;
 //Car
 var bremsen = false;
+var breakSound;
+var engineSound;
+//Sound
+var animaCrash;
 var hitmax = 0;
 var animals = [];
 var animalNames = ['elephant','giraffe', 'gorilla','lion','monkey'];
@@ -23,11 +28,16 @@ var walk;
 var frameCounter = 0;
 var mainState = {
     preload: function () {
+        //Images
         game.load.image('road', "assets/road/roads320.png");
         game.load.image('car', "assets/car/car.png");
         game.load.image('break', "assets/bottom/break.png");
         game.load.image('footer', "assets/bottom/footer.png");
-
+        //AudiFiles
+        game.load.audio('backgroundSound', 'assets/audio/serengeti_background_music.mp3');
+        game.load.audio('engine', 'assets/audio/serengeti_motor.mp3');
+        game.load.audio('break', 'assets/audio/serengeti_brake.mp3');
+        game.load.audio('die', 'assets/audio/punch.mp3');
         //Animal
         game.load.spritesheet('elephant', 'assets/animals/sprite_elephant_left_222x204.png', 222, 204, 2);
         game.load.spritesheet('giraffe', 'assets/animals/sprite_giraffe_left_222x204.png', 222, 204, 2);
@@ -51,6 +61,11 @@ var mainState = {
         game.stage.backgroundColor = "#ffffff";
         //Road
         road = game.add.tileSprite(0, 0, width, height, 'road');
+        backgroundSound = game.add.audio('backgroundSound');
+        backgroundSound.play();
+        backgroundSound.loop = true;
+        breakSound = game.add.audio('break');
+        engineSound = game.add.audio('engine');
         //Car
         car = game.add.tileSprite(((320 / 2)-16) * scaleFactorWidth, (500-100) * scaleFactorHeight, 128, 253, 'car');
         game.physics.enable(car, Phaser.Physics.ARCADE);
@@ -147,6 +162,7 @@ function spawnAnimal() {
 function listener () {
     backgroundv = 0;
     bremsen = true;
+    breakSound.play();
     for (var i = 0; i < animals.length; i++) {
         var animal = animals[i];
         animal.body.velocity.y = 0;
