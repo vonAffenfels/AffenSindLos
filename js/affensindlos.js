@@ -35,7 +35,7 @@ var mainState = {
         game.load.image('footer', 'assets/bottom/footer.png');
         //AudiFiles
         game.load.audio('backgroundSong', 'assets/audio/serengeti_background_music.mp3');
-        //game.load.audio('engine', 'assets/audio/serengeti_motor.mp3');
+        game.load.audio('engine', 'assets/audio/serengeti_motor.mp3');
         game.load.audio('break', 'assets/audio/serengeti_brake.mp3');
         game.load.audio('die', 'assets/audio/punch.mp3');
         //Animal
@@ -66,7 +66,9 @@ var mainState = {
         backgroundSound.loop = true;
         backgroundSound.play();
         breakSound = game.add.audio('break');
-        //engineSound = game.add.audio('engine');
+        engineSound = game.add.audio('engine');
+        engineSound.loop = true;
+        //engineSound.play();
         animalHit = game.add.audio('die');
         //Car
         car = game.add.tileSprite(((320 / 2)-16) * scaleFactorWidth, (500-100) * scaleFactorHeight, 128, 253, 'car');
