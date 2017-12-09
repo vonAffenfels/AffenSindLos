@@ -9,6 +9,7 @@ var game = new Phaser.Game(width, height, Phaser.CANVAS, 'gameDiv');
 var road;
 var backgroundv;
 var backgroundSound;
+var score = 0;
 //Car
 var bremsen = false;
 var breakSound;
@@ -59,6 +60,16 @@ var mainState = {
     create: function () {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.stage.backgroundColor = "#ffffff";
+        text = game.add.text(0, 0, "Score: ");
+
+        text.font = 'Arial';
+        text.fontWeight = 'bold';
+        text.fontSize = 25;
+        text.fill = '#ff0000';
+        text.anchor.set(0);
+        text.align = 'center';
+
+
         //Road
         road = game.add.tileSprite(0, 0, width, height, 'road');
         backgroundSound = game.add.audio('backgroundSong');
@@ -124,6 +135,11 @@ var mainState = {
         if(frameCounter % 50 === 0 && bremsen === false) {
             spawnAnimal();
         }
+        if (frameCounter % 100 === 0 && bremsen === false){
+            score += 1;
+            text.setText('Score: '+score);
+        }
+
         frameCounter++;
     }
 

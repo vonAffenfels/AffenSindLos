@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea269dfb-bd96-4cf8-b97e-2a764b8e6541" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/affensindlos.js" afterPath="$PROJECT_DIR$/js/affensindlos.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,24 +30,10 @@
       <file leaf-file-name="affensindlos.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="70" column="10" lean-forward="false" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+            <state relative-caret-position="408">
+              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/bottom/footer.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="break.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/bottom/break.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -343,12 +330,12 @@
       <workItem from="1512812681683" duration="12951000" />
       <workItem from="1512836880849" duration="487000" />
       <workItem from="1512837396371" duration="49000" />
-      <workItem from="1512837691093" duration="673000" />
+      <workItem from="1512837691093" duration="1294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133558000" />
+    <option name="totallyTimeSpent" value="134179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -706,8 +693,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="70" column="10" lean-forward="false" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+        <state relative-caret-position="408">
+          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding />
         </state>
       </provider>
