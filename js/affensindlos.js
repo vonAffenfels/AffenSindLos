@@ -29,13 +29,13 @@ var frameCounter = 0;
 var mainState = {
     preload: function () {
         //Images
-        game.load.image('road', "assets/road/roads320.png");
-        game.load.image('car', "assets/car/car.png");
-        game.load.image('break', "assets/bottom/break.png");
-        game.load.image('footer', "assets/bottom/footer.png");
+        game.load.image('road', 'assets/road/roads320.png');
+        game.load.image('car', 'assets/car/car.png');
+        game.load.image('break', 'assets/bottom/break.png');
+        game.load.image('footer', 'assets/bottom/footer.png');
         //AudiFiles
-        game.load.audio('backgroundSound', 'assets/audio/serengeti_background_music.mp3');
-        game.load.audio('engine', 'assets/audio/serengeti_motor.mp3');
+        game.load.audio('backgroundSong', 'assets/audio/serengeti_background_music.mp3');
+        //game.load.audio('engine', 'assets/audio/serengeti_motor.mp3');
         game.load.audio('break', 'assets/audio/serengeti_brake.mp3');
         game.load.audio('die', 'assets/audio/punch.mp3');
         //Animal
@@ -61,11 +61,13 @@ var mainState = {
         game.stage.backgroundColor = "#ffffff";
         //Road
         road = game.add.tileSprite(0, 0, width, height, 'road');
-        backgroundSound = game.add.audio('backgroundSound');
-        backgroundSound.play();
+        backgroundSound = game.add.audio('backgroundSong');
+
         backgroundSound.loop = true;
+        backgroundSound.play();
         breakSound = game.add.audio('break');
-        engineSound = game.add.audio('engine');
+        //engineSound = game.add.audio('engine');
+        animalHit = game.add.audio('die');
         //Car
         car = game.add.tileSprite(((320 / 2)-16) * scaleFactorWidth, (500-100) * scaleFactorHeight, 128, 253, 'car');
         game.physics.enable(car, Phaser.Physics.ARCADE);
@@ -103,6 +105,7 @@ var mainState = {
                     animal.dmg = true;
                     if (animal.dmg === true && animal.dmgused === false ) {
                         hitmax += 1;
+                        animalHit.play();
                         animal.dmgused = true;
                     }
                     return;
@@ -122,7 +125,8 @@ var mainState = {
         frameCounter++;
     }
 
-}
+};
+
 function spawnAnimal() {
     var direction = Math.random() < 0.5? 'left' : 'right';
     var tiername = animalNames[Math.floor(Math.random() * animalNames.length)];
@@ -162,6 +166,7 @@ function spawnAnimal() {
 function listener () {
     backgroundv = 0;
     bremsen = true;
+    breakSound = game.add.audio('break');
     breakSound.play();
     for (var i = 0; i < animals.length; i++) {
         var animal = animals[i];
