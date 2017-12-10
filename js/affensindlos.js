@@ -45,7 +45,7 @@ var mainState = {
         game.load.image('retryButton', 'assets/menu/button-retry.png');
         //Images
         game.load.image('Header', 'assets/menu/goal.png');
-        game.load.image('road', 'assets/road/road-1.png');
+        game.load.image('road', 'assets/road/road.png');
         game.load.image('car', 'assets/car/car.png');
         game.load.image('break', 'assets/bottom/break.png');
         game.load.image('left', 'assets/bottom/left.png');
@@ -77,7 +77,7 @@ var mainState = {
     },
     create: function () {
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.stage.backgroundColor = "#ffffff";
+
         //Text Highscore
         aHS = loadHighscore();
         if(aHS === undefined){
@@ -109,9 +109,11 @@ var mainState = {
         altHSTXT.fill = '#ff0000';
         altHSTXT.anchor.set(0);
         altHSTXT.align = 'center';
-
+        //Road
+        road = game.add.tileSprite(0, 0, (width), (height), 'road');
         //Menu
             //start
+
         startButton = game.add.tileSprite(((width / 2) - 65) * scaleFactorWidth, (height / 2) * scaleFactorHeight, 158, 145, 'startButton');
         startButton.inputEnabled = true;
         startButton.events.onInputDown.add(startGamelistener, this);
@@ -122,8 +124,7 @@ var mainState = {
         restartButton.events.onInputUp.add(restartGamelistenerUp, this);
         restartButton.visible = false;
 
-        //Road
-        road = game.add.tileSprite(0, 0, (width)*(scaleFactorWidth), (height)*scaleFactorHeight, 'road');
+
         backgroundSound = game.add.audio('backgroundSong');
 
         backgroundSound.loop = true;
@@ -177,7 +178,7 @@ var mainState = {
         breakButton.scale.setTo(scaleFactorWidth / 2, scaleFactorHeight / 2);
         road.scale.setTo(scaleFactorWidth, scaleFactorHeight);
         backgroundv = 1;
-
+        game.stage.backgroundColor = "#ffffff";
     },
     update: function () {
         if (gameMode === 0) {
