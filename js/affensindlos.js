@@ -55,13 +55,14 @@ var mainState = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     },
     render: function () {
-       /* if (game.debug) {
+        if (game.debug) {
             game.debug.body(car);
+            game.debug.body(breakButton);
             for (var i = 0; i < animals.length; i++) {
                 game.debug.body(animals[i]);
 
             }
-        }*/
+        }
     },
     create: function () {
         game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -74,7 +75,6 @@ var mainState = {
         text.fill = '#ff0000';
         text.anchor.set(0);
         text.align = 'center';
-
         //Menu
             //start
         startButton = game.add.tileSprite(((width / 2) - 65) * scaleFactorWidth, (height / 2) * scaleFactorHeight, 158, 145, 'startButton');
@@ -188,7 +188,9 @@ var mainState = {
 //For COMMIT
 function spawnAnimal() {
     var direction = Math.random() < 0.5 ? 'left' : 'right';
+    //direction = 'right';
     var tiername = animalNames[Math.floor(Math.random() * animalNames.length)];
+    //tiername = 'elephant';
     var tier = game.add.tileSprite((direction === 'left' ? 320 : (-50)) * scaleFactorWidth, 50 + (Math.random() * 100), 222, 204, tiername, 1);
     tier.anchor.x = 0.5;
     tier.anchor.y = 0.5;
@@ -198,24 +200,53 @@ function spawnAnimal() {
     tier.animations.play('walk', 5, true);
     game.physics.enable(tier, Phaser.Physics.ARCADE);
     //car.scale.setTo(scaleFactorWidth / 3, scaleFactorHeight / 3);
+    if(direction === 'right'){
+        tier.scale.x *= -1;
+    }
     switch (tiername) {
         case 'elephant':
-            tier.body.setSize(150, 100, 250 / scaleFactorWidth, 300 / scaleFactorHeight);
+            if(direction === 'left'){
+                tier.body.setSize(150, 100, 250 / scaleFactorWidth, 300 / scaleFactorHeight);
+            }
+            if(direction === 'right'){
+                tier.body.setSize(150, 100, (-400 / scaleFactorWidth), (300 / scaleFactorHeight));
+            }
             break;
         case 'giraffe':
-            tier.body.setSize(150, 200, 250 / scaleFactorWidth, 190 / scaleFactorHeight);
+            if(direction === 'left'){
+                tier.body.setSize(150, 200, 250 / scaleFactorWidth, 190 / scaleFactorHeight);
+            }
+            if(direction === 'right'){
+                tier.body.setSize(150, 200, (-400 / scaleFactorWidth), (190 / scaleFactorHeight));
+            }
             break;
         case 'gorilla':
-            tier.body.setSize(150, 100, 250 / scaleFactorWidth, 300 / scaleFactorHeight);
+            if(direction === 'left'){
+                tier.body.setSize(150, 100, 250 / scaleFactorWidth, 300 / scaleFactorHeight);
+            }
+            if(direction === 'right'){
+                tier.body.setSize(150, 100, (-402 / scaleFactorWidth), 300 / scaleFactorHeight);
+            }
             break;
         case 'lion':
-            tier.body.setSize(150, 100, 250 / scaleFactorWidth, 300 / scaleFactorHeight);
+            if(direction === 'left'){
+                tier.body.setSize(150, 100, 215 / scaleFactorWidth, 300 / scaleFactorHeight);
+            }
+            if(direction === 'right'){
+                tier.body.setSize(150, 100, -435 / scaleFactorWidth, 300 / scaleFactorHeight);
+            }
             break;
         case 'monkey':
-            tier.body.setSize(150, 100, 250 / scaleFactorWidth, 300 / scaleFactorHeight);
+            if(direction === 'left'){
+                tier.body.setSize(150, 100, 250 / scaleFactorWidth, 300 / scaleFactorHeight);
+            }
+            if(direction === 'right'){
+                tier.body.setSize(150, 100, -420 / scaleFactorWidth, 300 / scaleFactorHeight);
+            }
             break;
     }
     var speed = 2 + (Math.random() * 2) * 100;
+
     tier.body.velocity.x = (direction === 'left' ? -speed : speed);
     tier.body.velocity.y = animalyspeed;
     tier.animations.currentAnim.setFrame(Math.floor(Math.random() * 2), true);
@@ -247,6 +278,11 @@ function listenerUp() {
 
 function startGamelistener() {
     gameMode = 1;
+    road.visible = true;
+    car.visible = true;
+    breakButton.visible = true;
+    infoBox.visible = true;
+    text.visible = true;
 }
 
 function startGamelistenerUp() {
@@ -257,7 +293,7 @@ function startGamelistenerUp() {
     text.visible = true;
 }
 function restartGamelistener() {
-    console.log('NOCHMAL KLICK');
+
     gameMode = 1;
 
     road.visible = true;
@@ -272,7 +308,7 @@ function restartGamelistener() {
 }
 
 function restartGamelistenerUp() {
-    console.log('Nochmal kein klick mehr');
+
 }
 
 game.state.add('mainState', mainState);
