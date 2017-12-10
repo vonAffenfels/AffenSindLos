@@ -180,7 +180,7 @@ var mainState = {
     },
     update: function () {
         if (gameMode === 0) {
-            road.visible = false;
+            road.visible = true;
             car.visible = false;
             breakButton.visible = false;
             infoBox.visible = false;
