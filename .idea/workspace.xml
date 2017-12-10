@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea269dfb-bd96-4cf8-b97e-2a764b8e6541" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change beforePath="$PROJECT_DIR$/js/affensindlos.js" afterPath="$PROJECT_DIR$/js/affensindlos.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="affensindlos.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="137" column="35" lean-forward="false" selection-start-line="137" selection-start-column="35" selection-end-line="137" selection-end-column="35" />
+            <state relative-caret-position="283">
+              <caret line="267" column="24" lean-forward="false" selection-start-line="267" selection-start-column="24" selection-end-line="267" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -289,12 +287,12 @@
       <workItem from="1512837396371" duration="49000" />
       <workItem from="1512837691093" duration="1544000" />
       <workItem from="1512891947605" duration="222000" />
-      <workItem from="1512894229552" duration="2534000" />
+      <workItem from="1512894229552" duration="2717000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137185000" />
+    <option name="totallyTimeSpent" value="137368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1758" y="293" width="1440" height="810" extended-state="0" />
@@ -641,8 +639,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="137" column="35" lean-forward="false" selection-start-line="137" selection-start-column="35" selection-end-line="137" selection-end-column="35" />
+        <state relative-caret-position="283">
+          <caret line="267" column="24" lean-forward="false" selection-start-line="267" selection-start-column="24" selection-end-line="267" selection-end-column="24" />
           <folding />
         </state>
       </provider>

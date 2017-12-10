@@ -141,6 +141,7 @@ var mainState = {
         if (gameMode === 1) {
             startButton.inputEnabled = false;
             startButton.visible = false;
+            restartButton.visible = false;
             restartButton.inputEnabled = false;
             if (hitmax === 5) {
                 restartButton.inputEnabled = true;
@@ -267,6 +268,7 @@ function restartGamelistenerUp() {
     text.visible = true;
     score = 0;
     hitmax = 0;
+    text.setText('Score: ' + score);
     animals = [];
 }
 
