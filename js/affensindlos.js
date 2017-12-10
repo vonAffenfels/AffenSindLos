@@ -95,7 +95,7 @@ var mainState = {
         breakSound = game.add.audio('break');
         engineSound = game.add.audio('engine');
         engineSound.loop = true;
-        //engineSound.play();
+        engineSound.play();
         animalHit = game.add.audio('die');
         //Car
         car = game.add.tileSprite(((320 / 2) - 16) * scaleFactorWidth, (500 - 100) * scaleFactorHeight, 128, 253, 'car');
