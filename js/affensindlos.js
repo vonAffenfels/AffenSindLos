@@ -119,7 +119,7 @@ var mainState = {
         startButton.events.onInputDown.add(startGamelistener, this);
         startButton.events.onInputUp.add(startGamelistenerUp, this);
             //restart
-        restartButton = game.add.tileSprite(((width / 2) - 65) * scaleFactorWidth, ((height / 2) +50) * scaleFactorHeight, 143, 145, 'retryButton');
+        restartButton = game.add.tileSprite(((width / 2) - 65) * scaleFactorWidth, ((height / 2) +100) * scaleFactorHeight, 143, 145, 'retryButton');
         restartButton.events.onInputDown.add(restartGamelistener, this);
         restartButton.events.onInputUp.add(restartGamelistenerUp, this);
         restartButton.visible = false;
