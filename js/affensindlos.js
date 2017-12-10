@@ -22,6 +22,7 @@ var score = 0;
 var bremsen = false;
 var breakSound;
 var engineSound;
+var engineSoundActive = false;
 //Sound
 var animalHit;
 var hitmax = 0;
@@ -122,7 +123,7 @@ var mainState = {
         restartButton.visible = false;
 
         //Road
-        road = game.add.tileSprite(0, 0, width, height, 'road');
+        road = game.add.tileSprite(0, 0, width*(scaleFactorWidth), height*scaleFactorHeight, 'road');
         backgroundSound = game.add.audio('backgroundSong');
 
         backgroundSound.loop = true;
@@ -130,7 +131,7 @@ var mainState = {
         breakSound = game.add.audio('break');
         engineSound = game.add.audio('engine');
         engineSound.loop = true;
-        engineSound.play();
+
         animalHit = game.add.audio('die');
         //Car
         car = game.add.tileSprite(((320 / 2) - 16) * scaleFactorWidth, (500 - 100) * scaleFactorHeight, 128, 253, 'car');
@@ -188,6 +189,10 @@ var mainState = {
             altHSTXT.visible = false;
         }
         if(gameMode === 2){
+            if (engineSoundActive===true){
+                engineSoundActive = false;
+                engineSound.stop();
+            }
             headerImage.visible = true;
             startButton.visible = false;
             road.visible = false;
@@ -206,6 +211,10 @@ var mainState = {
             saveHighscore(score);
         }
         if (gameMode === 1) {
+            if (engineSoundActive===false){
+                engineSoundActive = true;
+                engineSound.play();
+            }
             headerImage.visible = false;
             console.log(altHS);
             startButton.inputEnabled = false;
