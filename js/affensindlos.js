@@ -45,7 +45,7 @@ var mainState = {
         game.load.image('retryButton', 'assets/menu/button-retry.png');
         //Images
         game.load.image('Header', 'assets/menu/goal.png');
-        game.load.image('road', 'assets/road/roads320.png');
+        game.load.image('road', 'assets/road/road-1.png');
         game.load.image('car', 'assets/car/car.png');
         game.load.image('break', 'assets/bottom/break.png');
         game.load.image('left', 'assets/bottom/left.png');
@@ -123,7 +123,7 @@ var mainState = {
         restartButton.visible = false;
 
         //Road
-        road = game.add.tileSprite(0, 0, width*(scaleFactorWidth), height*scaleFactorHeight, 'road');
+        road = game.add.tileSprite(0, 0, (width)*(scaleFactorWidth), (height)*scaleFactorHeight, 'road');
         backgroundSound = game.add.audio('backgroundSong');
 
         backgroundSound.loop = true;
