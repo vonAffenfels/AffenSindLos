@@ -55,13 +55,13 @@ var mainState = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     },
     render: function () {
-        if (game.debug) {
+       /* if (game.debug) {
             game.debug.body(car);
             for (var i = 0; i < animals.length; i++) {
                 game.debug.body(animals[i]);
 
             }
-        }
+        }*/
     },
     create: function () {
         game.physics.startSystem(Phaser.Physics.ARCADE);
