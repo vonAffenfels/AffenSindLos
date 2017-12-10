@@ -82,7 +82,7 @@ var mainState = {
         if(aHS === undefined){
             aHS = 0;
         }
-        headerImage = game.add.tileSprite(-80 *(scaleFactorWidth),0, 490, 200, 'Header');
+        headerImage = game.add.tileSprite(-50 /(scaleFactorWidth),0, 490, 200, 'Header');
         altHS = aHS;
         aHSTXT = game.add.text(50*(scaleFactorWidth),200*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
         altHSTXT = game.add.text(40*(scaleFactorWidth),250*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
