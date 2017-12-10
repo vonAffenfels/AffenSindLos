@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea269dfb-bd96-4cf8-b97e-2a764b8e6541" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/button-close.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/button-start.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/footer.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/punch.mp3" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-4.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-5.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/serengeti_background_music.mp3" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/serengeti_brake.mp3" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/serengeti_motor.mp3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change beforePath="$PROJECT_DIR$/js/affensindlos.js" afterPath="$PROJECT_DIR$/js/affensindlos.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +17,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            <state relative-caret-position="340">
+              <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -40,8 +29,8 @@
       <file leaf-file-name="affensindlos.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="346" column="17" lean-forward="false" selection-start-line="346" selection-start-column="17" selection-end-line="346" selection-end-column="17" />
+            <state relative-caret-position="540">
+              <caret line="232" column="47" lean-forward="false" selection-start-line="232" selection-start-column="47" selection-end-line="232" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -58,14 +47,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>canvas</find>
-      <find>stopMove</find>
-      <find>3000</find>
-      <find>my</find>
-      <find>scor</find>
-      <find>HighScore</find>
-      <find>myScore</find>
-      <find>score</find>
       <find>restart()</find>
       <find>animalDMG</find>
       <find>myScore.scorePoints</find>
@@ -88,6 +69,14 @@
       <find>footer</find>
       <find>break</find>
       <find>breakButton</find>
+      <find>saveHigh</find>
+      <find>loadHighscore</find>
+      <find>'hs'</find>
+      <find>text</find>
+      <find>loadHi</find>
+      <find>retry</find>
+      <find>altHS =</find>
+      <find>aHS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -124,10 +113,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2425" />
-    <option name="width" value="526" />
-    <option name="height" value="735" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="1553" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -147,7 +136,22 @@
     <panes>
       <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AffenSindLos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AffenSindLos" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="AffenSindLos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AffenSindLos" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -300,21 +304,21 @@
       <workItem from="1512891947605" duration="222000" />
       <workItem from="1512894229552" duration="3972000" />
       <workItem from="1512899488846" duration="862000" />
-      <workItem from="1512902631204" duration="4695000" />
+      <workItem from="1512902631204" duration="9312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144180000" />
+    <option name="totallyTimeSpent" value="148797000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-7" y="0" width="1553" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.035416666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20039037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07431797" sideWeight="0.5025418" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08458244" sideWeight="0.5025418" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -339,7 +343,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -546,13 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="52" column="30" lean-forward="true" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/normalize.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
@@ -584,13 +581,6 @@
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DOMCore.js" />
     <entry file="file://$PROJECT_DIR$/../rocket_science 2.js" />
     <entry file="file://$PROJECT_DIR$/../rocket_science.js" />
-    <entry file="file://$PROJECT_DIR$/index_tmp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/_skizze.png" />
     <entry file="file://$PROJECT_DIR$/assets/road/road-1.png">
       <provider selected="true" editor-type-id="images">
@@ -628,22 +618,39 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="50" column="25" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/bottom/footer.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="330" column="36" lean-forward="false" selection-start-line="330" selection-start-column="32" selection-end-line="330" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index_tmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="52" column="30" lean-forward="true" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        <state relative-caret-position="340">
+          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -652,8 +659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="346" column="17" lean-forward="false" selection-start-line="346" selection-start-column="17" selection-end-line="346" selection-end-column="17" />
+        <state relative-caret-position="540">
+          <caret line="232" column="47" lean-forward="false" selection-start-line="232" selection-start-column="47" selection-end-line="232" selection-end-column="47" />
           <folding />
         </state>
       </provider>

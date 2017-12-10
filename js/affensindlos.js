@@ -6,6 +6,10 @@ var scaleFactorHeight = height / 568;
 var gameMode = 0; // 0 Menu, 1 Game, 2Game End
 var startButton;
 var restartButton;
+var aHSTXT = '';
+var aHS = 0;
+var altHSTXT = '';
+var altHS = 0;
 //Canvas
 var game = new Phaser.Game(width, height, Phaser.CANVAS, 'gameDiv');
 //Background + Speed of Background
@@ -59,26 +63,49 @@ var mainState = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     },
     render: function () {
-        if (game.debug) {
+       /* if (game.debug) {
             game.debug.body(car);
             game.debug.body(breakButton);
             for (var i = 0; i < animals.length; i++) {
                 game.debug.body(animals[i]);
 
             }
-        }
+        }*/
     },
     create: function () {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.stage.backgroundColor = "#ffffff";
+        //Text Highscore
+        aHS = loadHighscore();
+        if(aHS === undefined){
+            aHS = 0;
+        }
+        altHS = aHS;
+        aHSTXT = game.add.text(50*(scaleFactorWidth),200*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
+        altHSTXT = game.add.text(40*(scaleFactorWidth),250*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
         text = game.add.text(0, 0, "Score: ");
 
-        text.font = 'Arial';
+        text.font = 'liquorstore-jazz';
         text.fontWeight = 'bold';
         text.fontSize = 25;
         text.fill = '#ff0000';
         text.anchor.set(0);
         text.align = 'center';
+
+        aHSTXT.font = 'liquorstore-jazz';
+        aHSTXT.fontWeight = 'bold';
+        aHSTXT.fontSize = 20;
+        aHSTXT.fill = '#ff0000';
+        aHSTXT.anchor.set(0);
+        aHSTXT.align = 'center';
+
+        altHSTXT.font = 'liquorstore-jazz';
+        altHSTXT.fontWeight = 'bold';
+        altHSTXT.fontSize = 20;
+        altHSTXT.fill = '#ff0000';
+        altHSTXT.anchor.set(0);
+        altHSTXT.align = 'center';
+
         //Menu
             //start
         startButton = game.add.tileSprite(((width / 2) - 65) * scaleFactorWidth, (height / 2) * scaleFactorHeight, 158, 145, 'startButton');
@@ -86,10 +113,11 @@ var mainState = {
         startButton.events.onInputDown.add(startGamelistener, this);
         startButton.events.onInputUp.add(startGamelistenerUp, this);
             //restart
-        restartButton = game.add.tileSprite(((width / 2) - 65) * scaleFactorWidth, (height / 2) * scaleFactorHeight, 143, 145, 'retryButton');
+        restartButton = game.add.tileSprite(((width / 2) - 65) * scaleFactorWidth, ((height / 2) +50) * scaleFactorHeight, 143, 145, 'retryButton');
         restartButton.events.onInputDown.add(restartGamelistener, this);
         restartButton.events.onInputUp.add(restartGamelistenerUp, this);
         restartButton.visible = false;
+
         //Road
         road = game.add.tileSprite(0, 0, width, height, 'road');
         backgroundSound = game.add.audio('backgroundSong');
@@ -154,21 +182,34 @@ var mainState = {
             breakButton.visible = false;
             infoBox.visible = false;
             text.visible = false;
+            altHSTXT.visible = false;
         }
         if(gameMode === 2){
+
+            startButton.visible = false;
             road.visible = false;
             car.visible = false;
             breakButton.visible = false;
             infoBox.visible = false;
             text.visible = false;
+            altHSTXT.visible = true;
+            aHSTXT.visible = true;
             animals.visible = false;
             restartButton.visible = true;
+            //HS Texte
+            aHSTXT.setText('Ihr erreichter Highscore ist:\n'+score);
+            altHSTXT.setText('Ihr vorheriger Heighscore ist:\n'+altHS);
+            //Save Highscore
+            saveHighscore(score);
         }
         if (gameMode === 1) {
+            console.log(altHS);
             startButton.inputEnabled = false;
             startButton.visible = false;
             restartButton.visible = false;
             restartButton.inputEnabled = false;
+            altHSTXT.visible = false;
+            aHSTXT.visible = false;
             if (hitmax === 5) {
                 restartButton.inputEnabled = true;
                 gameMode = 2;
@@ -188,7 +229,11 @@ var mainState = {
                         }
                         return;
                     }
+                    if (gameMode===2){
+                        animal.visible = false;
+                    }
                     animal.hit = true;
+                    animal.events.onOutOfBounds.add(kill, this);
 
                     if (animal.dmg === true && animal.dmgused === false) {
                         hitmax += 1;
@@ -348,6 +393,53 @@ function rightMoveDown() {
 }
 function rightMoveUp() {
     carSpeedX = 0;
+}
+//Load Highscore
+function loadHighscore () {
+    getHighscore(function (highscore) {
+            aHS = highscore;
+    });
+}
+
+function getHighscore(callback) {
+
+    if (!(window.parent) || window.parent === window) {
+        console.log("App missing");
+    }
+
+    var handler = function (event) {
+        if (event.data.method === "setHighscore") {
+            callback(event.data.payload.score);
+            window.removeEventListener("message", handler);
+        }
+
+    };
+
+    window.addEventListener("message", handler);
+
+    window.parent.postMessage({
+        method: "getHighscore",
+        payload: {
+            name: 'AffenSindLos'
+        }
+    }, "*");
+}
+
+function saveHighscore(highscore) {
+    if (!highscore || isNaN(highscore)) {
+        return;
+    }
+
+    window.parent.postMessage({
+        method: "saveHighscore",
+        payload: {
+            score: parseInt(highscore),
+            name: 'AffenSindLos'
+        }
+    }, "*");
+}
+function kill(animal){
+    animal.kill();
 }
 game.state.add('mainState', mainState);
 game.state.start('mainState');
