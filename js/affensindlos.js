@@ -257,10 +257,9 @@ function startGamelistenerUp() {
     text.visible = true;
 }
 function restartGamelistener() {
+    console.log('NOCHMAL KLICK');
     gameMode = 1;
-}
 
-function restartGamelistenerUp() {
     road.visible = true;
     car.visible = true;
     breakButton.visible = true;
@@ -270,6 +269,10 @@ function restartGamelistenerUp() {
     hitmax = 0;
     text.setText('Score: ' + score);
     animals = [];
+}
+
+function restartGamelistenerUp() {
+    console.log('Nochmal kein klick mehr');
 }
 
 game.state.add('mainState', mainState);
