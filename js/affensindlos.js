@@ -85,8 +85,8 @@ var mainState = {
         }
         headerImage = game.add.tileSprite(-50 /(scaleFactorWidth),0, 490, 200, 'Header');
         altHS = aHS;
-        aHSTXT = game.add.text(50*(scaleFactorWidth),200*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
-        altHSTXT = game.add.text(40*(scaleFactorWidth),250*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
+        aHSTXT = game.add.text(50*(scaleFactorWidth),250*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
+        altHSTXT = game.add.text(40*(scaleFactorWidth),300*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
         text = game.add.text(0, 0, "Score: ");
 
         text.font = 'liquorstore-jazz';
@@ -114,7 +114,7 @@ var mainState = {
         //Menu
             //start
 
-        startButton = game.add.tileSprite(((width / 2) - 65) * scaleFactorWidth, (height / 2) * scaleFactorHeight, 158, 145, 'startButton');
+        startButton = game.add.tileSprite(((width / 2) - 85) * scaleFactorWidth, (height / 2) * scaleFactorHeight, 158, 145, 'startButton');
         startButton.inputEnabled = true;
         startButton.events.onInputDown.add(startGamelistener, this);
         startButton.events.onInputUp.add(startGamelistenerUp, this);
