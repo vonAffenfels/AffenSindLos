@@ -3,6 +3,7 @@ var width = window.innerWidth;
 var scaleFactorWidth = width / 320;
 var scaleFactorHeight = height / 568;
 //Menu
+var headerImage;
 var gameMode = 0; // 0 Menu, 1 Game, 2Game End
 var startButton;
 var restartButton;
@@ -42,6 +43,7 @@ var mainState = {
         game.load.image('startButton', 'assets/menu/button-start.png');
         game.load.image('retryButton', 'assets/menu/button-retry.png');
         //Images
+        game.load.image('Header', 'assets/menu/goal.png');
         game.load.image('road', 'assets/road/roads320.png');
         game.load.image('car', 'assets/car/car.png');
         game.load.image('break', 'assets/bottom/break.png');
@@ -80,6 +82,7 @@ var mainState = {
         if(aHS === undefined){
             aHS = 0;
         }
+        headerImage = game.add.tileSprite(-50 *(scaleFactorWidth),0, 490, 200, 'Header');
         altHS = aHS;
         aHSTXT = game.add.text(50*(scaleFactorWidth),200*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
         altHSTXT = game.add.text(40*(scaleFactorWidth),250*(scaleFactorHeight), 'Ihr Aktueller Highscore ist: \n' +aHS);
@@ -185,7 +188,7 @@ var mainState = {
             altHSTXT.visible = false;
         }
         if(gameMode === 2){
-
+            headerImage.visible = true;
             startButton.visible = false;
             road.visible = false;
             car.visible = false;
@@ -203,6 +206,7 @@ var mainState = {
             saveHighscore(score);
         }
         if (gameMode === 1) {
+            headerImage.visible = false;
             console.log(altHS);
             startButton.inputEnabled = false;
             startButton.visible = false;
