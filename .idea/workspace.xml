@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea269dfb-bd96-4cf8-b97e-2a764b8e6541" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/button-close.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/button-start.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/footer.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/punch.mp3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-1.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-2.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-3.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-4.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/road-5.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/serengeti_background_music.mp3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/serengeti_brake.mp3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bilder für die affen sind los/serengeti_motor.mp3" afterPath="" />
       <change beforePath="$PROJECT_DIR$/js/affensindlos.js" afterPath="$PROJECT_DIR$/js/affensindlos.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +28,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+            <state relative-caret-position="289">
+              <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -29,8 +40,8 @@
       <file leaf-file-name="affensindlos.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="192" column="6" lean-forward="false" selection-start-line="192" selection-start-column="6" selection-end-line="192" selection-end-column="6" />
+            <state relative-caret-position="675">
+              <caret line="346" column="17" lean-forward="false" selection-start-line="346" selection-start-column="17" selection-end-line="346" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -47,7 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>highsco</find>
       <find>canvas</find>
       <find>stopMove</find>
       <find>3000</find>
@@ -73,10 +83,11 @@
       <find>car.body</find>
       <find>height</find>
       <find>audi</find>
-      <find>break</find>
       <find>if (</find>
       <find>call</find>
       <find>footer</find>
+      <find>break</find>
+      <find>breakButton</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,17 +158,17 @@
     <property name="nodejs_interpreter_path" value="node" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/js" />
+      <recent name="$PROJECT_DIR$/img/animal" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/bottom" />
       <recent name="$PROJECT_DIR$/assets/car" />
       <recent name="$PROJECT_DIR$/assets/animals" />
       <recent name="$PROJECT_DIR$/assets/road" />
       <recent name="$PROJECT_DIR$/audio" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/js" />
-      <recent name="$PROJECT_DIR$/img/animal" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -289,12 +300,12 @@
       <workItem from="1512891947605" duration="222000" />
       <workItem from="1512894229552" duration="3972000" />
       <workItem from="1512899488846" duration="862000" />
-      <workItem from="1512902631204" duration="2298000" />
+      <workItem from="1512902631204" duration="4695000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141783000" />
+    <option name="totallyTimeSpent" value="144180000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1176" extended-state="6" />
@@ -631,8 +642,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        <state relative-caret-position="289">
+          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -641,8 +652,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="192" column="6" lean-forward="false" selection-start-line="192" selection-start-column="6" selection-end-line="192" selection-end-column="6" />
+        <state relative-caret-position="675">
+          <caret line="346" column="17" lean-forward="false" selection-start-line="346" selection-start-column="17" selection-end-line="346" selection-end-column="17" />
           <folding />
         </state>
       </provider>

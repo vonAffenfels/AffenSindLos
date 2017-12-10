@@ -27,7 +27,9 @@ var animalyspeed = 250;
 //SCORE+Button
 var infoBox;
 var breakButton;
-
+var leftButton;
+var rightButton;
+var carSpeedX = 0;
 var walk;
 var frameCounter = 0;
 var mainState = {
@@ -39,6 +41,8 @@ var mainState = {
         game.load.image('road', 'assets/road/roads320.png');
         game.load.image('car', 'assets/car/car.png');
         game.load.image('break', 'assets/bottom/break.png');
+        game.load.image('left', 'assets/bottom/left.png');
+        game.load.image('right', 'assets/bottom/right.png');
         game.load.image('footer', 'assets/bottom/footer.png');
         //AudiFiles
         game.load.audio('backgroundSong', 'assets/audio/serengeti_background_music.mp3');
@@ -107,12 +111,34 @@ var mainState = {
         infoBox.anchor.y = 1;
         //breakButton
         breakButton = game.add.tileSprite((320 / 2) * scaleFactorWidth, (568) * scaleFactorHeight, 125, 125, 'break');
+        leftButton = game.add.tileSprite((320 -285) * scaleFactorWidth, (568 + 2) * scaleFactorHeight, 64, 64, 'left');
+        rightButton = game.add.tileSprite((320 -35) * scaleFactorWidth, (568 + 2) * scaleFactorHeight, 64, 64, 'right');
+
+        //Button Functions
         breakButton.inputEnabled = true;
         breakButton.anchor.x = 0.5;
         breakButton.anchor.y = 1;
-        breakButton.inputEnabled = true;
+
+        leftButton.inputEnabled = true;
+        leftButton.anchor.x = 0.5;
+        leftButton.anchor.y = 1;
+
+        rightButton.inputEnabled = true;
+        rightButton.anchor.x = 0.5;
+        rightButton.anchor.y = 1;
+
+        //ButtnListner
         breakButton.events.onInputDown.add(listener, this);
         breakButton.events.onInputUp.add(listenerUp, this);
+        //left
+        leftButton.events.onInputDown.add(leftMoveDown, this);
+        leftButton.events.onInputUp.add(leftMoveUp, this);
+        //right
+        rightButton.events.onInputDown.add(rightMoveDown, this);
+        rightButton.events.onInputUp.add(rightMoveUp, this);
+
+
+
         //animals
         car.scale.setTo(scaleFactorWidth / 3, scaleFactorHeight / 3);
         infoBox.scale.setTo(scaleFactorWidth, scaleFactorHeight);
@@ -180,6 +206,7 @@ var mainState = {
             }
 
             frameCounter++;
+            car.position.x += carSpeedX
         }
     }
 
@@ -310,6 +337,17 @@ function restartGamelistener() {
 function restartGamelistenerUp() {
 
 }
-
+function leftMoveDown() {
+    carSpeedX = -1;
+}
+function leftMoveUp() {
+    carSpeedX = 0;
+}
+function rightMoveDown() {
+    carSpeedX = 1;
+}
+function rightMoveUp() {
+    carSpeedX = 0;
+}
 game.state.add('mainState', mainState);
 game.state.start('mainState');
