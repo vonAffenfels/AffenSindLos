@@ -265,7 +265,15 @@ var mainState = {
             }
 
             frameCounter++;
-            car.position.x += carSpeedX
+            if (car.position.x > 0 && car.position.x < width) {
+                car.position.x += carSpeedX
+            }
+            if(car.position.x === 0){
+                car.position.x += 1;
+            }
+            if(car.position.x === width){
+                car.position.x -= 1;
+            }
         }
     }
 

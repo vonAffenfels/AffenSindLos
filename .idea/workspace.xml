@@ -28,8 +28,8 @@
       <file leaf-file-name="affensindlos.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="121" column="101" lean-forward="false" selection-start-line="121" selection-start-column="101" selection-end-line="121" selection-end-column="101" />
+            <state relative-caret-position="565">
+              <caret line="274" column="32" lean-forward="false" selection-start-line="274" selection-start-column="32" selection-end-line="274" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -303,12 +303,12 @@
       <workItem from="1512891947605" duration="222000" />
       <workItem from="1512894229552" duration="3972000" />
       <workItem from="1512899488846" duration="862000" />
-      <workItem from="1512902631204" duration="13386000" />
+      <workItem from="1512902631204" duration="13680000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152871000" />
+    <option name="totallyTimeSpent" value="153165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1553" height="1047" extended-state="0" />
@@ -658,8 +658,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/affensindlos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="121" column="101" lean-forward="false" selection-start-line="121" selection-start-column="101" selection-end-line="121" selection-end-column="101" />
+        <state relative-caret-position="565">
+          <caret line="274" column="32" lean-forward="false" selection-start-line="274" selection-start-column="32" selection-end-line="274" selection-end-column="32" />
           <folding />
         </state>
       </provider>
