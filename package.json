@@ -1,0 +1,36 @@
+{
+    "name": "enterprise",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack-dev-server"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "adventskalender-js-api": "git+https://github.ape/vonAffenfels/adventskalender-js-api.git",
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-preset-env": "^1.6.1",
+        "grunt": "^1.0.1",
+        "grunt-contrib-cssmin": "^2.2.1",
+        "grunt-contrib-uglify": "^3.2.1",
+        "grunt-contrib-watch": "^1.0.0",
+        "grunt-gh-pages": "^2.0.0",
+        "grunt-keepalive": "^1.0.0",
+        "grunt-webpack": "^3.0.2",
+        "grunt-webpack-server": "^0.1.0",
+        "jquery": "^3.2.1",
+        "p2": "^0.7.1",
+        "phaser": "^2.6.2",
+        "pixi.js": "^4.6.1",
+        "shake.js": "^1.2.2",
+        "uuid": "^3.1.0",
+        "webpack": "^3.8.1",
+        "webpack-dev-server": "^2.9.4"
+    },
+    "dependencies": {
+        "grunt-sass": "^2.0.0"
+    }
+}
