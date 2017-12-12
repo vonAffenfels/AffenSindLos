@@ -108,7 +108,7 @@ module.exports = class CanvasGame {
 
         if (!this.theme) {
             this.theme = this.game.add.audio('theme');
-            this.theme.loopFull(1);
+            this.theme.loopFull();
         }
     }
 
@@ -188,6 +188,7 @@ module.exports = class CanvasGame {
         this.breakBtnInterval = null;
         this.speedInterval = null;
         this.breakBtn.events.onInputDown.add(() => {
+            this.break.volume = 0.2;
             this.break.play();
             clearInterval(this.speedInterval);
             this.breakBtnInterval = setInterval(() => {
@@ -218,7 +219,7 @@ module.exports = class CanvasGame {
 
         this.animalTimer = this.game.time.create(false);
         this.runningAnimalTimer = null;
-        this.animalTimer.loop(5000, () => {
+        this.animalTimer.loop(50000, () => {
             this.level++;
             this.updateTimer();
         });
@@ -322,27 +323,33 @@ module.exports = class CanvasGame {
         let direction = this.game.rnd.between(0, 1);
         let posX = direction === 0 ? -200 : this.width + 200;
         let posY = this.game.rnd.between(-200 * this.speed, this.speed < 1 ? this.height - (400 * this.scaleFactorHeight) : 100);
+        let animationspeed = 5;
 
         switch (type) {
             case 4:
                 animal = this.animals.create(posX, posY, 'monkey');
                 scale = 0.3;
+                animationspeed = 7;
                 break;
             case 3:
                 animal = this.animals.create(posX, posY, 'lion');
                 scale = 0.4;
+                animationspeed = 5;
                 break;
             case 2:
                 animal = this.animals.create(posX, posY, 'giraffe');
                 scale = 0.5;
+                animationspeed = 3;
                 break;
             case 1:
                 animal = this.animals.create(posX, posY, 'elephant');
                 scale = 0.6;
+                animationspeed = 2;
                 break;
             case 0:
                 animal = this.animals.create(posX, posY, 'gorilla');
                 scale = 0.4;
+                animationspeed = 4;
                 break;
         }
 
@@ -356,6 +363,8 @@ module.exports = class CanvasGame {
         animal.scale.set(scale * this.scaleFactorWidth, scale * this.scaleFactorWidth);
         animal.body.velocity.x = this.game.rnd.between((1 - scale) * 300, (1 - scale) * 300);
         animal.checkWorldBounds = true;
+        animal.animations.add('walk');
+        animal.animations.play('walk', 5, true);
 
 
         if (direction === 1) {
