@@ -42,6 +42,11 @@ module.exports = class CanvasGame {
             create: this._create.bind(this),
             update: this._update.bind(this)
         });
+        this.game.state.add('rampage', {
+            preload: this._preload.bind(this),
+            create: this._create.bind(this),
+            update: this._updateRampage.bind(this)
+        });
         this.game.state.add('debug', {
             preload: this._preload.bind(this),
             create: this._create.bind(this)
@@ -54,6 +59,7 @@ module.exports = class CanvasGame {
             preload: this._preload.bind(this),
             create: this._createWarning.bind(this)
         });
+
         if (this.debugging) {
             this.game.state.start("debug");
         } else {
@@ -76,6 +82,9 @@ module.exports = class CanvasGame {
     }
 
     saveHighscore() {
+        if (this.game.state.getCurrentState().key === "rampage") {
+            return;
+        }
         this.api.saveHighscore(this.highscore);
     }
 
@@ -91,14 +100,17 @@ module.exports = class CanvasGame {
         let font1 = "font1";
         let font1white = "font1white";
 
-        /*
-        this.beginText = this.game.add.bitmapText(10 * this.scaleFactorWidth, ((10 * this.scaleFactorWidth) + this.textSize), font1white, "", this.textSize / 2);
-        this.beginText.setText(`${this.width}x${this.height} ${this.scaleFactorWidth} ${this.scaleFactorHeight}`);
-        */
-
         this.beginText = this.game.add.bitmapText(20 * this.scaleFactorWidth, ((20 * this.scaleFactorWidth) + this.textSize), font1white, "", this.textSize * 2);
         this.beginText.setText("Los geht's!\nPunkte: " + this.score);
         this.saveHighscore();
+
+        this.rampageText = this.game.add.bitmapText(20 * this.scaleFactorWidth, ((200 * this.scaleFactorWidth) + this.textSize), font1, "", this.textSize * 2);
+        this.rampageText.setText("Ich hasse Tiere!!");
+        this.rampageText.tint = 0xFF0000;
+        this.rampageText.inputEnabled = true;
+        this.rampageText.events.onInputDown.add(() => {
+            this.game.state.start("rampage");
+        })
 
         this.menuText = this.game.add.bitmapText(20 * this.scaleFactorWidth, this.height - ((20 * this.scaleFactorWidth) + this.textSize), font1white, "", this.textSize);
         this.menuText.setText("Beruehre den Bildschirm um zu spielen!");
@@ -123,6 +135,7 @@ module.exports = class CanvasGame {
     _preload() {
         this.game.load.bitmapFont('font1', 'font/LiquorstoreJazz.png', 'font/LiquorstoreJazz.fnt');
         this.game.load.bitmapFont('font1white', 'font/LiquorstoreJazzWhite.png', 'font/LiquorstoreJazzWhite.fnt');
+        this.game.load.spritesheet("blood", "img/blood.png", 512, 512, 6, 0, 0);
 
         this.game.load.spritesheet("elephant", "img/elephant.png", 219, 132, 2, 2, 0);
         this.game.load.spritesheet("gorilla", "img/gorilla.png", 141, 135, 2, 2, 0);
@@ -236,9 +249,13 @@ module.exports = class CanvasGame {
         });
         this.updateTimer();
 
-        // balls
+        // animals
         this.animals = this.game.add.group(this.game, this.game.world, "animals");
         this.animals.physicsBodyType = Phaser.Physics.ARCADE;
+
+        // blood
+        this.blood = this.game.add.group(this.game, this.game.world, "blood");
+        this.blood.physicsBodyType = Phaser.Physics.ARCADE;
 
         //this.spawnDebug();
 
@@ -265,10 +282,18 @@ module.exports = class CanvasGame {
     updateTimer() {
         this.animalTimer.remove(this.runningAnimalTimer);
         let interval = 1000 - (100 * this.level);
-        interval = interval - (100 * this.speed);
 
-        if (interval < 250) {
-            interval = 250;
+        if (this.game.state.getCurrentState().key !== "rampage") {
+            interval = interval - (100 * this.speed);
+
+            if (interval < 250) {
+                interval = 250;
+            }
+        } else {
+            interval = interval - (100 * this.speed);
+            if (interval < 100) {
+                interval = 100;
+            }
         }
 
         this.runningAnimalTimer = this.animalTimer.loop(interval, this.spawnAnimal, this);
@@ -284,8 +309,34 @@ module.exports = class CanvasGame {
         this.scoretext.setText("Punkte: " + this.score);
     }
 
-    _update() {
+    _updateRampage() {
+        this.breakBtn.visible = false;
+        this.footer.visible = false;
 
+        this.car.x = this.game.input.x;
+
+        let animals = this.animals.getAll("alive", true);
+        for (let i = 0; i < animals.length; i++) {
+            let animal = animals[i];
+            animal.y += this.speed * this.scaleFactorHeight;
+        }
+        let bloodSplatters = this.blood.getAll("alive", true);
+        for (let i = 0; i < bloodSplatters.length; i++) {
+            let blood = bloodSplatters[i];
+            if (!blood.animations.currentAnim.isPlaying) {
+                blood.destroy();
+            } else {
+                blood.y += this.speed * this.scaleFactorHeight;
+            }
+        }
+
+        this.background.tilePosition.y += this.speed;
+
+        this.game.physics.arcade.overlap(this.animals, this.car, this.animalHitCar, null, this);
+        this.updateScore();
+    }
+
+    _update() {
         this.score += this.speed;
         this.score = parseInt(this.score);
 
@@ -308,8 +359,20 @@ module.exports = class CanvasGame {
         this.punch.play();
         this.strikes--;
 
-        if (this.strikes <= 0) {
+        if (this.strikes <= 0 && this.game.state.getCurrentState().key !== "rampage") {
             return this.loose();
+        }
+
+        if (this.game.state.getCurrentState().key === "rampage") {
+            this.score += 1;
+            let blood = this.blood.create(animal.x, animal.y, "blood");
+            blood.anchor.x = .5;
+            blood.anchor.y = .5;
+            blood.scale.set(animal.scale.x * 0.5 * this.scaleFactorWidth, animal.scale.y * 0.5 * this.scaleFactorHeight);
+            blood.animations.add('splatter');
+            blood.animations.play('splatter', 7, false);
+            blood.checkWorldBounds = true;
+            blood.outOfBoundsKill = true;
         }
 
         animal.hit = true;
@@ -435,6 +498,7 @@ module.exports = class CanvasGame {
         }
         this.lost = true;
         this.animals.destroy(true);
+        this.blood.destroy(true);
         this.car.destroy(true);
         this.game.state.start("menu");
     }
