@@ -36,11 +36,15 @@ module.exports = class CanvasGame {
         this.won = false;
         this.lost = false;
 
-        this.game = new Phaser.Game(this.width, this.height, Phaser.AUTO, id);
+        this.game = new Phaser.Game(this.width, this.height, Phaser.CANVAS, id);
         this.game.state.add('game', {
             preload: this._preload.bind(this),
             create: this._create.bind(this),
             update: this._update.bind(this)
+        });
+        this.game.state.add('debug', {
+            preload: this._preload.bind(this),
+            create: this._create.bind(this)
         });
         this.game.state.add('menu', {
             preload: this._preload.bind(this),
@@ -50,7 +54,11 @@ module.exports = class CanvasGame {
             preload: this._preload.bind(this),
             create: this._createWarning.bind(this)
         });
-        this.game.state.start("menu");
+        if (this.debugging) {
+            this.game.state.start("debug");
+        } else {
+            this.game.state.start("menu");
+        }
 
         this.user = null;
     }
@@ -116,11 +124,11 @@ module.exports = class CanvasGame {
         this.game.load.bitmapFont('font1', 'font/LiquorstoreJazz.png', 'font/LiquorstoreJazz.fnt');
         this.game.load.bitmapFont('font1white', 'font/LiquorstoreJazzWhite.png', 'font/LiquorstoreJazzWhite.fnt');
 
-        this.game.load.spritesheet("gorilla", "img/gorilla.png", 222, 204, 2);
-        this.game.load.spritesheet("elephant", "img/elephant.png", 222, 204, 2);
-        this.game.load.spritesheet("giraffe", "img/giraffe.png", 222, 204, 2);
-        this.game.load.spritesheet("lion", "img/lion.png", 222, 204, 2);
-        this.game.load.spritesheet("monkey", "img/monkey.png", 222, 204, 2);
+        this.game.load.spritesheet("elephant", "img/elephant.png", 219, 132, 2, 2, 0);
+        this.game.load.spritesheet("gorilla", "img/gorilla.png", 141, 135, 2, 2, 0);
+        this.game.load.spritesheet("giraffe", "img/giraffe.png", 146, 203, 2, 2, 0);
+        this.game.load.spritesheet("lion", "img/lion.png", 207, 112, 2, 2, 0);
+        this.game.load.spritesheet("monkey", "img/monkey.png", 154, 133, 2, 2, 0);
 
         this.game.load.image("button-break", "img/button-break.png");
         this.game.load.image("button-retry", "img/button-retry.png");
@@ -232,6 +240,8 @@ module.exports = class CanvasGame {
         this.animals = this.game.add.group(this.game, this.game.world, "animals");
         this.animals.physicsBodyType = Phaser.Physics.ARCADE;
 
+        //this.spawnDebug();
+
         // scoretext
         this.scoretext = this.game.add.bitmapText(20 * this.scaleFactorWidth, (20 * this.scaleFactorWidth) + this.textSize, 'font1', 'Punkte: ' + this.score, this.textSize);
         this.punch = this.game.add.audio('punch');
@@ -275,7 +285,6 @@ module.exports = class CanvasGame {
     }
 
     _update() {
-        this.background.tilePosition.y += this.speed;
 
         this.score += this.speed;
         this.score = parseInt(this.score);
@@ -283,8 +292,9 @@ module.exports = class CanvasGame {
         let animals = this.animals.getAll("alive", true);
         for (let i = 0; i < animals.length; i++) {
             let animal = animals[i];
-            animal.y += this.speed;
+            animal.y += this.speed * this.scaleFactorHeight;
         }
+        this.background.tilePosition.y += this.speed;
 
         this.game.physics.arcade.overlap(this.animals, this.car, this.animalHitCar, null, this);
         this.updateScore();
@@ -322,6 +332,30 @@ module.exports = class CanvasGame {
         }, this.game.rnd.between(500, 1000), Phaser.Easing.Default, true, 0, 0, false);
     }
 
+    spawnDebug() {
+        let animal;
+
+        animal = this.animals.create(100, 0, 'monkey');
+        animal.animations.add('walk');
+        animal.animations.play('walk', 7, true);
+        animal = this.animals.create(100, 150, 'lion');
+
+        animal.animations.add('walk');
+        animal.animations.play('walk', 5, true);
+        animal = this.animals.create(100, 300, 'giraffe');
+
+        animal.animations.add('walk');
+        animal.animations.play('walk', 3, true);
+        animal = this.animals.create(100, 550, 'elephant');
+
+        animal.animations.add('walk');
+        animal.animations.play('walk', 2, true);
+        animal = this.animals.create(100, 700, 'gorilla');
+
+        animal.animations.add('walk');
+        animal.animations.play('walk', 3, true);
+    }
+
     spawnAnimal(type) {
         type = type === undefined ? this.game.rnd.between(0, 4) : type;
         let animal;
@@ -355,7 +389,7 @@ module.exports = class CanvasGame {
             case 0:
                 animal = this.animals.create(posX, posY, 'gorilla');
                 scale = 0.4;
-                animationspeed = 4;
+                animationspeed = 3;
                 break;
         }
 
