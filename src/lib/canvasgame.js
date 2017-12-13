@@ -104,14 +104,6 @@ module.exports = class CanvasGame {
         this.beginText.setText("Los geht's!\nPunkte: " + this.score);
         this.saveHighscore();
 
-        this.rampageText = this.game.add.bitmapText(20 * this.scaleFactorWidth, ((200 * this.scaleFactorWidth) + this.textSize), font1, "", this.textSize * 2);
-        this.rampageText.setText("Ich hasse Tiere!!");
-        this.rampageText.tint = 0xFF0000;
-        this.rampageText.inputEnabled = true;
-        this.rampageText.events.onInputDown.add(() => {
-            this.game.state.start("rampage");
-        })
-
         this.menuText = this.game.add.bitmapText(20 * this.scaleFactorWidth, this.height - ((20 * this.scaleFactorWidth) + this.textSize), font1white, "", this.textSize);
         this.menuText.setText("Beruehre den Bildschirm um zu spielen!");
 
@@ -122,8 +114,18 @@ module.exports = class CanvasGame {
             this.highscoreText.setText("Hoechste Punktzahl: " + this.highscore + " NEUER REKORD!");
         }
 
+        this.startRampageTimeout = null;
         this.game.input.onDown.addOnce(() => {
-            this.game.state.start("game");
+            this.startRampageTimeout = setTimeout(() => {
+                this.startRampageTimeout = null;
+                this.game.state.start("rampage");
+            }, 4000);
+        });
+        this.game.input.onUp.addOnce(() => {
+            if (this.startRampageTimeout) {
+                clearTimeout(this.startRampageTimeout);
+                this.game.state.start("game");
+            }
         });
 
         if (!this.theme) {
@@ -269,6 +271,11 @@ module.exports = class CanvasGame {
             this.motor.loopFull(0.5);
         }
 
+        if (this.game.state.getCurrentState().key === "rampage") {
+            this.breakBtn.visible = false;
+            this.footer.visible = false;
+        }
+
         this.background.sendToBack();
     }
 
@@ -310,8 +317,6 @@ module.exports = class CanvasGame {
     }
 
     _updateRampage() {
-        this.breakBtn.visible = false;
-        this.footer.visible = false;
 
         this.car.x = this.game.input.x;
 
