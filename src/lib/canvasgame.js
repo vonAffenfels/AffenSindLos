@@ -159,6 +159,9 @@ module.exports = class CanvasGame {
     }
 
     _create() {
+        if (this.speedInterval) {
+            clearInterval(this.speedInterval);
+        }
         this.score = 0;
         this.speed = 2;
         this.won = false;
@@ -313,7 +316,10 @@ module.exports = class CanvasGame {
         }
 
         this.game.add.tween(animal).to({angle: targetAngle}, this.game.rnd.between(500, 1000), Phaser.Easing.Default, true, 0, 0, false);
-        this.game.add.tween(animal).to({x: targetX, y: targetY}, this.game.rnd.between(500, 1000), Phaser.Easing.Default, true, 0, 0, false);
+        this.game.add.tween(animal).to({
+            x: targetX,
+            y: targetY
+        }, this.game.rnd.between(500, 1000), Phaser.Easing.Default, true, 0, 0, false);
     }
 
     spawnAnimal(type) {
@@ -365,7 +371,6 @@ module.exports = class CanvasGame {
         animal.checkWorldBounds = true;
         animal.animations.add('walk');
         animal.animations.play('walk', 5, true);
-
 
         if (direction === 1) {
             animal.body.velocity.x *= -1;
