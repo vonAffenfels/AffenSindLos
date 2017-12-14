@@ -102,7 +102,6 @@ module.exports = class CanvasGame {
 
         this.beginText = this.game.add.bitmapText(20 * this.scaleFactorWidth, ((20 * this.scaleFactorWidth) + this.textSize), font1white, "", this.textSize * 2);
         this.beginText.setText("Los geht's!\nPunkte: " + this.score);
-        this.saveHighscore();
 
         this.menuText = this.game.add.bitmapText(20 * this.scaleFactorWidth, this.height - ((20 * this.scaleFactorWidth) + this.textSize), font1white, "", this.textSize);
         this.menuText.setText("Beruehre den Bildschirm um zu spielen!");
@@ -113,6 +112,7 @@ module.exports = class CanvasGame {
             this.highscore = this.score;
             this.highscoreText.setText("Hoechste Punktzahl: " + this.highscore + " NEUER REKORD!");
         }
+        this.saveHighscore();
 
         this.startRampageTimeout = null;
         this.game.input.onDown.addOnce(() => {
